@@ -31,4 +31,4 @@ CON.close()
 print('\n'.join([f'{e}, {key[0]}: {key[1]} x {len(METADATA.tables[key[0]].columns)}'
                  for e, key in enumerate(RESULT)]))
 
-print(enumerate(RESULT.keys())
+# print(enumerate(RESULT.keys())
