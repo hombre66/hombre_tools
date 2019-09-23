@@ -8,10 +8,11 @@ import re
 from pandas import HDFStore, DataFrame
 
 # RAEDING JDE CATALOG
-with HDFStore('./catalog_new.h5') as store:
+with HDFStore('hombre_tools/tools/catalog/catalog_new.h5') as store:
+    print(store.info())
     TABLES = store.get('tables')
     COLUMNS = store.get('columns')
-    print(store.info())
+
 
 CATALOG = ((TABLES, 'Table'),
            (COLUMNS, 'Field'))
@@ -72,4 +73,3 @@ def comment(script):
             lines.append(line)
         sqls.append('\n'.join(lines[:]))
     return ';\n'.join(sqls)
-

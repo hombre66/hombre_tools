@@ -1,5 +1,5 @@
 """
-Example of connecting to edwards mssql instance
+Example of connecting to edwards  instance
 Stanislav Vohnik 2019-08-21
 """
 from pandas import read_sql
