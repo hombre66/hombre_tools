@@ -6,7 +6,7 @@ Stanislav Vohnik
 from unicodedata import normalize
 from pandas import read_html, DataFrame, concat
 from requests_html import HTMLSession
-from src.utils.utils import run_in_separate_threads
+from hombre_tools.utils.utils import run_in_separate_threads
 
 def get_table_data(find, head, key, index=0, url='http://www.jdetables.com'):
     """
@@ -45,17 +45,17 @@ TITLES = [normalize("NFKD", code.full_text) for code in OPTIONS[1:]]
 
 for e, system in enumerate(SYSTEMS):
     # getting tables for a system
-    find = 'body > div.middle > div.content > table'
+    _find = 'body > div.middle > div.content > table'
     url = f'http://www.jdetables.com/?schema=920&system={system}'
-    df = get_table_data(find, 1, 0, url=url)
+    df = get_table_data(_find, 1, 0, url=url)
     tables = df.Table[:]
     df['system_name'] = TITLES[e]
     df['system'] = system
     TABLES = concat([TABLES, df])
 
     # getting table's columns within a system
-    find = 'body > div.middle form table'
-    args = {"find":find, "head":0, "key":0, "index":1}
+    _find = 'body > div.middle form table'
+    args = {"find":_find, "head":0, "key":0, "index":1}
     urls = [f'http://www.jdetables.com/?schema=920&system={system}&table={table}' for table in tables]
     print(f"{e+1}/{len(SYSTEMS)}, system_{system}, #tables: {len(tables)}")
     COLUMNS = concat([COLUMNS, run_in_separate_threads(urls, get_table_data, **args)])

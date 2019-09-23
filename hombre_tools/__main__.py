@@ -36,11 +36,11 @@ def jde_comment():
 
 def profile():
     """wrapper for data profile module"""
-    from hombre_tools.db.db import engine, read_sql, ora_url
+    from hombre_tools.db.db import sqlalchemy_engine, read_sql, ora_url
     from hombre_tools.tools.data_profiling import data_profile
     print(ARGS)
     url = ora_url(ARGS) # TODO via
-    engine = engine(ARGS,url)
+    engine = sqlalchemy_engine(ARGS,url)
     data_frame = read_sql(engine, ARGS.sql)
     ARGS.data_frame = data_frame
     if not data_frame.empty:
