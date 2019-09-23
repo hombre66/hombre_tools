@@ -3,7 +3,7 @@ stanislav Vohnik password utility
 2019-08-10
 """
 import keyring
-from argparse import ArgumentError, ArgumentParser
+from argparse import ArgumentParser
 from pyperclip import paste, copy as clipcopy
 
 PARSER = ArgumentParser(description='Password Utility version 0.1')
@@ -30,5 +30,5 @@ if __name__ == 'main':
 
     if ARGS.action == 'get':
         clipcopy(keyring.get_password(ARGS.sevice, ARGS.user))
-        print('getted to clipboard')
+        print('get to clip board')
         
