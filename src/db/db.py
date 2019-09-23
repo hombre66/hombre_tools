@@ -1,41 +1,23 @@
 """
-Example of connecting to edwards mssql instance
+Example of connecting to edvards oracle instance
 Stanislav Vohnik 2019-08-21
 """
-from pandas import read_sql
-from  pandas_profiling import ProfileReport
+from os import environ
 from sqlalchemy import create_engine
+import pandas as pd
+from keyring import get_password as pswd
 
-HOST = 'AWPJDEDB3'
-DB = 'JDE_PROD_REP'
-DRIVER = 'ODBC+Driver+13+for+SQL+Server'
-URL = f'mssql+pyodbc://@{HOST}/{DB}?trusted_connection=yes&driver={DRIVER}'
+# we have to point to oracle client directory
+environ['PATH'] = 'C:/oracle/instantclient_19_3;%PATH%'
 
-EMGINE = create_engine(URL)
+HOST = 'awor-pddwhdb01'
+USER = "stanislav_vohnik"
+SID = 'dwhprd'
+URL = f'oracle://{USER}:{pswd(HOST, USER)}@{HOST}/{SID}'
 
-TABLES = ['PRODDTA.F0025',
-        'PRODDTA.F0013',
-        'PRODDTA.F40205',
-        'PRODDTA.F0010',
-        'PRODDTA.F1113',
-        'PRODDTA.F55XLVL2',
-        'PRODDTA.F5541JP1',
-        'PRODDTA.F0006',
-        'PRODDTA.F01151',
-        'PRODDTA.F4101D',
-        'PRODDTA.F0007',
-        'PRODDTA.F554701']
+# SQL Alchemy Engine
+ENGINE = create_engine(URL)
 
-for table in  TABLES:
-    df = read_sql(f"select * from {table}", EMGINE)
-    report = ProfileReport(df)
-    
-    for col in df.filter(regex='^ID').columns:
-        df[col] = df[col].astype('categorical')
-    report.to_file(f'{table}_profile.html')
-   
-    print(f'saved: {table}')
-
-# import HPFS5
-# comand = 'bcp JDE_PROD_REP.PRODCTL.F0101 out F0101.csv  -b format -c'
-# '''https://docs.microsoft.com/en-us/sql/tools/bcp-utility?view=sql-server-2017'''
+# PAndas DataFrame
+DF = pd.read_sql('select * from all_tables', ENGINE)
+print(DF.info())
