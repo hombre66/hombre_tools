@@ -1,7 +1,6 @@
 """Module for fetching metadata from database along with roe counts"""
 from operator import itemgetter
 from sqlalchemy import MetaData, create_engine, Table
-from get_tables_from_files import get_tables_from_sqlb
 
 METADATA = MetaData()
 HOST = 'AWPJDEDB3'
@@ -9,8 +8,8 @@ DB = 'JDE_PROD_REP'
 DRV = 'ODBC+Driver+13+for+SQL+Server'
 MYPATH = 'c:/Users/stanislav_vohnik/Documents/JDE Queries Current'
 
-TABLES = get_tables_from_sql(MYPATH)
-# TABLES = {'F40344',}
+TABLES = []
+TABLES = {'F40344',}
 
 ENGINE = create_engine(f'mssql+pyodbc://@{HOST}/{DB}?trusted_connection=yes&driver={DRV}')
 
@@ -32,4 +31,4 @@ CON.close()
 print('\n'.join([f'{e}, {key[0]}: {key[1]} x {len(METADATA.tables[key[0]].columns)}'
                  for e, key in enumerate(RESULT)]))
 
-print(enumerate(RESULT).keys())
+print(enumerate(RESULT.keys())

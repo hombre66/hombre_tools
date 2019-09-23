@@ -2,11 +2,11 @@
 from os import scandir
 import logging
 import sqlparse
-from hombre_tools.utils.utils import argument_parse
+from hombre_tools.utils.utils import argument_parser
 
-def comment():
+def jde_comment():
     """ adds comment to JDE source queries"""
-    from hombre_tools.tools import comment as _comment, OPTIONS
+    from hombre_tools.tools.jde_sql_decorate import comment as _comment, OPTIONS
     print(ARGS.path)
     OPTIONS['strip_comments'] = ARGS.strip_comments
     header = ARGS.header
@@ -36,8 +36,8 @@ def comment():
 
 def profile():
     """wrapper for data profile module"""
-    from hombre_tools.db.db_mssql import engine, read_sql, ora_url
-    from hombre_tools.tools import data_profile
+    from hombre_tools.db.db import engine, read_sql, ora_url
+    from hombre_tools.tools.data_profiling import data_profile
     print(ARGS)
     url = ora_url(ARGS) # TODO via
     engine = engine(ARGS,url)
