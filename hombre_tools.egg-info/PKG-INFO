@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: hombre-tools
+Version: 0.1.3
+Summary: tools for daily usage
+Home-page: https://github.com/hombre66/hombre_tools
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Provides-Extra: dev
+Provides-Extra: test
