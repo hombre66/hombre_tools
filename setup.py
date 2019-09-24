@@ -33,7 +33,6 @@ setup(
                       'pywin32-ctypes==0.2.0',
                       'pywinpty==0.5.5',
                       'requests==2.22.0',
-                      'scipy==1.3.0',
                       'seaborn==0.9.0',
                       'SQLAlchemy==1.3.7',
                       'sqlparse==0.3.0',
