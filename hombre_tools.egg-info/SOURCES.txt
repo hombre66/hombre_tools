@@ -2,7 +2,6 @@ LICENSE.txt
 MANIFEST.in
 README.md
 setup.py
-data/catalog_new.h5
 hombre_tools/Password.py
 hombre_tools/__init__.py
 hombre_tools/__main__.py
@@ -20,5 +19,6 @@ hombre_tools/tools/jde_sql_decorate.py
 hombre_tools/tools/metadata.py
 hombre_tools/tools/catalog/__init__.py
 hombre_tools/tools/catalog/catalog.py
+hombre_tools/tools/catalog/catalog_new.h5
 hombre_tools/utils/__init__.py
 hombre_tools/utils/utils.py

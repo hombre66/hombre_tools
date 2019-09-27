@@ -5,14 +5,14 @@ Stanislav Vohnik
 2019-09-06
 """
 import re
+from os import path
 from pandas import HDFStore, DataFrame
 
 # RAEDING JDE CATALOG
-with HDFStore('hombre_tools/tools/catalog/catalog_new.h5') as store:
+with HDFStore('/'.join(path.realpath(__file__).split('\\')[:-1]) +'/catalog/catalog_new.h5') as store:
     print(store.info())
     TABLES = store.get('tables')
     COLUMNS = store.get('columns')
-
 
 CATALOG = ((TABLES, 'Table'),
            (COLUMNS, 'Field'))

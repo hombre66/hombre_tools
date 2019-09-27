@@ -6,7 +6,7 @@ from os import environ
 from sqlalchemy import create_engine, exc
 from keyring import get_password as pswd
 import logging
-from pandas import DataFrame
+from pandas import DataFrame, read_sql
 
 def ora_url(args):
     return f'oracle://{args.user}:{pswd(args.host, args.user)}@{args.host}/{args.sid}'
@@ -26,9 +26,10 @@ def get_ora_tables(engine):
     sql = 'select * from all_tables'
     return read_sql(engine, sql)
 
-def read_sql(engine, sql):
+def db_read_sql(engine, sql):
     """wrapper for pandas read_sql returns data frame"""
     data_frame = DataFrame()
+    print(engine)
     try:
         with engine.connect() as con:
             data_frame = read_sql(sql, con)

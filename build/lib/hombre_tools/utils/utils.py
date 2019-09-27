@@ -19,7 +19,11 @@ def str2bool(answer):
 
 def argument_parser(description='tools cmd'):
     """Common set of arguments for CMD tools"""
-
+    description = '''Hombre tools
+       Examples: 
+                python -m hombre_tools --action profile --sql "select * from dim_country" --user xxxx --host host --sid sid --name nameit
+                python -m hombre_tools --action jde_comment  --path "C:/Queries"'''
+    
     parser = ArgumentParser(description=description)
 
     parser.add_argument("--login",
@@ -48,7 +52,7 @@ def argument_parser(description='tools cmd'):
 
     parser.add_argument("--year", default='2019', required=False)
 
-    parser.add_argument("--action", required=False)
+    parser.add_argument("--action", required=False, help='jde_comment, profile')
 
 
     parser.add_argument("--category",
