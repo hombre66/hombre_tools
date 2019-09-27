@@ -11,7 +11,7 @@ with open(path.join(here, 'README.md')) as f:
 setup(
     name='hombre_tools',  # Required
 
-    version='0.1.18',  # Required
+    version='0.1.19',  # Required
     description='tools for daily usage',  # Optional
     url='https://github.com/hombre66/hombre_tools',  # Optional
 
