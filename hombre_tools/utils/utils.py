@@ -67,9 +67,10 @@ def argument_parser(description='tools cmd'):
 
     parser.add_argument("--ora_path",
                         required=False,
-                        default='C:/oracle/instantclient_19_3;%PATH%')
+                        default='C:/oracle/instantclient;%PATH%')
 
     parser.add_argument("--sid", required=False)
+
 
     return parser
 

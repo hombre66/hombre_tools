@@ -19,9 +19,9 @@ def str2bool(answer):
 
 def argument_parser(description='tools cmd'):
     """Common set of arguments for CMD tools"""
-    description = '''Hombre tools
-       Examples: 
-                python -m hombre_tools --action profile --sql "select * from dim_country" --user xxxx --host host --sid sid --name nameit
+    description = '''Hombre tools\n\r
+       Examples: \n\r
+                python -m hombre_tools --action profile --sql "select * from dim_country" --user xxxx --host host --sid sid --name nameit\n\r
                 python -m hombre_tools --action jde_comment  --path "C:/Queries"'''
     
     parser = ArgumentParser(description=description)
@@ -67,9 +67,10 @@ def argument_parser(description='tools cmd'):
 
     parser.add_argument("--ora_path",
                         required=False,
-                        default='C:/oracle/instantclient_19_3;%PATH%')
+                        default='C:/oracle/instantclient;%PATH%')
 
     parser.add_argument("--sid", required=False)
+
 
     return parser
 

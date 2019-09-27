@@ -46,7 +46,8 @@ def profile():
         data_profile(data_frame, ARGS.name, category=ARGS.category)
     else:
         logging.warning('No data')
-        
+            
+
 if __name__ == '__main__':
     try:
         PARSER = argument_parser()

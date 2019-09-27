@@ -2,7 +2,6 @@ LICENSE.txt
 MANIFEST.in
 README.md
 setup.py
-hombre_tools/Password.py
 hombre_tools/__init__.py
 hombre_tools/__main__.py
 hombre_tools.egg-info/PKG-INFO
