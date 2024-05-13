@@ -21,7 +21,7 @@ setup(
     install_requires=['cx-Oracle==7.2.2',
                       'numpy==1.17.0',
                       'pandas==0.25.0',
-                      'pandas-profiling==2.3.0',
+                      'pandas-profiling,
                       'pyodbc==4.0.27',
                       'pyOpenSSL==19.0.0',
                       'pyperclip==1.7.0',
